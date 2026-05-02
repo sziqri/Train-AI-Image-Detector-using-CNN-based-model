@@ -1,0 +1,28 @@
+# configs/baseline_mobilenet.yaml
+model: "mobilenet_v1"
+img_size: 224           
+num_classes: 2
+pretrained: true
+
+# Paper 4 Specific Training Parameters
+seed: 42
+epochs: 100
+batch_size: 32          
+lr: 1e-3                
+weight_decay: 0.0       
+optimizer: "adam"      
+amp: true
+
+# Data Paths
+train_dir: "data/train"
+val_dir: "data/val" 
+num_workers: 4
+
+# Turn OFF forensic features for baseline
+use_extras: true
+use_fft: true
+use_ela: true
+use_prnu: true
+
+output_dir: "outputs/baseline_mobilenet_v1_withforensic"
+early_stopping_patience: 10

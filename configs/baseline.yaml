@@ -1,0 +1,30 @@
+# configs/baseline.yaml
+model: "resnet50"
+img_size: 224           # Standard for ImageNet ResNet50
+num_classes: 2
+pretrained: true
+
+# Paper 4 Specific Training Parameters
+seed: 42
+epochs: 100
+batch_size: 32          # Paper 4 used 32
+lr: 1e-3                # Paper 4 best learning rate with Adam
+weight_decay: 0.0       # Standard baseline
+optimizer: "adam"      # Can keep AdamW for PyTorch compatibility
+amp: true
+
+# Data Paths (Ensure these point to your 16k CIFAKE subset)
+train_dir: "data/train"
+val_dir: "data/val" 
+
+# Data Loading
+num_workers: 4
+
+# Turn OFF all forensic features for the baseline
+use_extras: true
+use_fft: true
+use_ela: true
+use_prnu: true
+
+output_dir: "outputs/baseline_resnet50_withforensic"
+early_stopping_patience: 10 # Paper 4 used patience of 10

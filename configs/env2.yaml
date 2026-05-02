@@ -1,0 +1,46 @@
+
+# configs/efficientnet_v2.yaml - OPTIMIZED FOR EfficientNetV2-M
+
+# Model Configuration
+model: "efficientnet_v2_m"
+img_size: 384 # Optimal for EfficientNetV2-M
+num_classes: 2
+pretrained: true
+
+# Training Parameters
+seed: 42
+epochs: 75
+batch_size: 8
+lr: 1e-4
+weight_decay: 1e-3
+optimizer: "adamw"
+amp: true
+
+# Data Paths
+data_dir: "data"
+train_dir: "data/train"
+val_dir: "data/val" 
+test_dir: "data/test"
+
+# Data Loading
+num_workers: 4
+
+# Augmentation (Enhanced for Forensic Tasks)
+rand_augment: true
+color_jitter: 0.2
+hflip_prob: 0.5
+
+pretrained: true
+
+# Forensic Features
+use_extras: true
+use_fft: true
+use_ela: true
+use_prnu: true
+
+# Output & Early Stopping
+output_dir: "outputs/efficientnet_v2_m"
+early_stopping_patience: 15
+
+# Fine-Tuning Settings
+fine_tune_lr: 1.0e-5  # The target Low Learning Rate (0.00001)

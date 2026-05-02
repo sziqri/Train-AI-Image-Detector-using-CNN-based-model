@@ -1,0 +1,43 @@
+# configs/resnet_config.yaml
+
+# Model Configuration
+model: "resnet50"
+img_size: 384           # 224 is standard for ResNet50
+num_classes: 2
+pretrained: true
+
+# Training Parameters
+seed: 42
+epochs: 75
+batch_size: 16          # Adjusted for ResNet (lighter than EffNetV2-M)
+lr: 1e-4                # Good starting point for ResNet fine-tuning
+weight_decay: 1e-4
+optimizer: "adamw"
+amp: true
+
+# Data Paths
+data_dir: "data"
+train_dir: "data/train"
+val_dir: "data/val" 
+test_dir: "data/test"
+
+# Data Loading
+num_workers: 4
+
+# Augmentation
+rand_augment: true
+color_jitter: 0.2
+hflip_prob: 0.5
+
+# Forensic Features
+use_extras: true
+use_fft: true
+use_ela: true
+use_prnu: true
+
+# Output
+output_dir: "outputs/resnet50"
+early_stopping_patience: 15
+
+# Fine-Tuning Settings
+fine_tune_lr: 1.0e-5  # Aligned with EfficientNetV2-M config
